@@ -3,6 +3,7 @@
 {% block title %}contact{% endblock title %}
 
 {% block body %}
+{% load static %}
 
 {% if messages %}
 <ul class="messages">
@@ -26,6 +27,14 @@
             <label for="desc" class="form-label">Description : </label>
             <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
         </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">price : </label>
+            <input type="number" class="form-control" id="price" name="price">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Image : </label>
+            <input class="form-control" type="file" id="image" name="image">
+          </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
           </div>

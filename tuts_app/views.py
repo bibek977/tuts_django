@@ -5,19 +5,27 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 def index(request):
+    candles=Candle.objects.all()
+    # print(candles)
+    params = {'product' : candles, 'total' : len(candles)}
     if request.user.is_authenticated:
-        return render(request, "index.html")
+        return render(request, "index.html",params)
     else:
         return redirect('/login')
 
 def about(request):
-    return render(request, "about.html")
+    candles=Candle.objects.all()
+    # print(candles)
+    params = {'product' : candles, 'total' : len(candles)}
+    return render(request, "about.html",params)
     
 def contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
         desc = request.POST.get('desc')
-        candle = Candle(name = name, desc=desc)
+        price = request.POST.get('price')
+        image = request.POST.get('image')
+        candle = Candle(name = name, desc=desc, price=price, image=image)
         candle.save()
 
         messages.success(request, f'{name} details updated.')

@@ -2,4 +2,94 @@
 
 {% block title %}Home{% endblock title %}
 
-{% block body %}Home Page{% endblock body %}
+{% block css %}
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: whitesmoke;
+    background-repeat: no-repeat
+}
+
+.bread-crumb {
+    cursor: pointer
+}
+
+.bread-crumb:hover {
+    text-decoration: underline
+}
+
+.block {
+    position: relative;
+    background-color: #fff;
+    width: 24%;
+    height: 300px;
+    border: 2px solid #E0E0E0;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin-bottom: 25px;
+    border-radius : 1rem;
+}
+
+.block.active {
+    border: 2px solid #FBC02D;
+    box-shadow: 0 4px 8px 0 #FBC02D
+}
+
+.price {
+    position: absolute;
+    background-color: #E0E0E0;
+    padding: 25px 10px;
+    top: 70%;
+    left: 66%;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px
+}
+
+.price.active {
+    background-color: #FBC02D;
+    box-shadow: 0 3px 6px 0 #FBC02D
+}
+
+.image {
+    width: 150px;
+    height: 180px
+}
+
+.prod-name {
+    font-size: 20px
+}
+
+@media screen and (max-width: 992px) {
+    .block {
+        width: 48%
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .block {
+        width: 98%
+    }
+}
+{% endblock css %}
+
+{% block body %}
+
+{% load static %}
+<div class="container-fluid px-5 py-5 mx-auto">
+    <div class="row justify-content-between px-4">
+      {% for i in product %}
+      <div class="block text-center">
+            <p class="my-3 prod-name">Stream Receptacles</p> <img class="image" src="https://i.imgur.com/57tvLxH.jpg">
+            <div class="price">
+                <h6 class="mb-0">$322</h6>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock body %}
